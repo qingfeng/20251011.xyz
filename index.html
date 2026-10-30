@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>20251011 - 加密史上最大爆仓日｜循环贷踩踏与交易所风险记录</title>
 <meta name="author" content="20251011.xyz" />
-<meta name="description" content="记录2025年10月11日加密市场爆仓金额高达190亿美元的历史性瞬间。川普突发宣布新对中国关税政策，引发循环贷链式踩踏，导致加密市场爆仓金额刷新纪录。另收录币安、Bybit 安全事件及 Bitget 交易异常，附核实来源与统计口径。" />
+<meta name="description" content="记录2025年10月11日加密市场爆仓金额高达190亿美元的历史性瞬间。川普突发宣布新对中国关税政策，引发循环贷链式踩踏，导致加密市场爆仓金额刷新纪录。另收录全球交易所盗币、FTX 等破产及停提事件，附 BTC 价格表现、逐条来源与筛选档案。" />
 <meta name="keywords" content="20251011,币圈爆仓,加密爆仓历史,循环贷踩踏,川普关税,190亿美元爆仓" />
 <meta name="robots" content="index, follow" />
 <meta property="og:title" content="20251011 - 加密史上最大爆仓日" />
@@ -145,7 +145,7 @@ body.anim-done .rise{opacity:1;transform:none;animation:none}
 .archive-note b{color:var(--white);font-weight:500}
 .archive-note a,.lr .date a{color:var(--white);text-underline-offset:4px}
 .archive-note a:hover,.lr .date a:hover{color:var(--red-bright)}
-.incidents{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.incidents{display:grid;align-items:start;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .incident{padding:28px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,255,255,.025),transparent);min-width:0;scroll-margin-top:24px}
 .incident.latest{grid-column:1/-1;border-color:var(--line-red)}
 .incident-meta{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:18px}
@@ -161,6 +161,31 @@ body.anim-done .rise{opacity:1;transform:none;animation:none}
 .incident-sources a:hover{color:var(--red-bright)}
 .archive-updated{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:22px}
 @media(max-width:640px){.incidents{grid-template-columns:1fr}.incident{padding:22px}.incident h3{font-size:21px}.news-link{padding:18px}.lr .top-row{flex-wrap:wrap;gap:6px}.lr .nm .yr{display:inline-block}}
+
+/* searchable global exchange archive */
+.archive-controls{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;margin:28px 0 16px}
+.archive-controls label{display:block;font-size:12px;color:var(--muted)}
+.archive-controls input,.archive-controls select{display:block;width:100%;margin-top:7px;padding:12px;background:#0d0d0e;border:1px solid rgba(255,255,255,.2);color:var(--white);font:14px var(--sans);border-radius:0;min-width:0}
+.archive-controls input:focus,.archive-controls select:focus{outline:1px solid var(--red);outline-offset:2px}
+.archive-controls select option{background:#111;color:var(--white)}
+.archive-status{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:24px;font-size:12px;color:var(--muted)}
+.archive-button{padding:9px 15px;color:var(--white);background:transparent;border:1px solid rgba(255,255,255,.25);font:12px var(--sans);cursor:pointer}
+.archive-button:hover,.archive-button:focus-visible{border-color:var(--red);color:var(--red-bright)}
+.archive-jumps{display:flex;gap:14px;flex-wrap:wrap;margin:20px 0;font-size:13px}
+.archive-jumps a{color:var(--white);text-underline-offset:5px}
+.incident[hidden],.lr[hidden]{display:none!important}
+.incident details>summary{list-style:none;cursor:pointer}
+.incident details>summary::-webkit-details-marker{display:none}
+.incident details>summary:focus-visible{outline:1px solid var(--red);outline-offset:8px}
+.incident .incident-open{display:block;color:var(--muted);font-size:11px;margin-top:18px}
+.incident details[open]>summary .incident-open{display:none}
+.incident .incident-body{border-top:1px solid var(--line);padding-top:20px;margin-top:20px}
+.incident:not(.latest) h3{font-size:21px}
+.incident:not(.latest) .incident-metric{font-size:26px}
+.incident:not(.latest) .incident-metric.text{font-size:19px}
+.rank-actions{display:flex;justify-content:center;margin-top:28px}
+#archive-empty{padding:30px 0;color:var(--muted);font-size:14px}
+@media(max-width:640px){.archive-controls{grid-template-columns:1fr 1fr}.archive-controls label:first-child{grid-column:1/-1}.archive-status{align-items:flex-start}.incident:not(.latest) h3{font-size:20px}}
 
 /* quote */
 .quote{padding:130px 0;text-align:center;position:relative}
@@ -276,60 +301,29 @@ footer .note{font-family:var(--serif);font-size:13.5px;color:var(--dim)}
   <!-- leaderboard -->
   <section class="section">
     <div class="sec-head reveal"><span class="no">02</span><h2>加密重大风险事件金额榜</h2><span class="line"></span></div>
-    <p class="reveal" style="margin:-32px 0 44px;color:var(--muted);font-size:14px;max-width:780px">按已收录事件公开报道的美元金额从高到低排列，现含币安、Bybit 安全事件及历史爆仓记录。每条标注金额口径；受影响资产、被盗资产与 24 小时爆仓名义价值不等同，不计算合计，也不代表最终净损失排名。安全事件来源及说明见下方档案。</p>
+    <p class="reveal" style="margin:-32px 0 44px;color:var(--muted);font-size:14px;max-width:780px">按已收录事件公开报道的美元金额从高到低排列，现含全球交易所风险档案与历史爆仓记录。每条标注金额口径；受影响资产、被盗资产与 24 小时爆仓名义价值不等同，不计算合计，也不代表最终净损失排名。同一 FTX 破产事件已将原市场清算条目合并为客户资金挪用记录；其破产期间盗币另有重叠风险说明。金额为近似值或已标注的下限，来源及说明见下方档案。</p>
     <div class="archive-note reveal" id="btc-methodology"><b>BTC 价格口径：</b>统一采用 Coinbase BTC/USD 的 UTC 日线，以事件日前一日收盘价为基准，展示当日、7 天后和 30 天后的收盘涨跌。“最深下探”取事件日至 30 天后（含首尾）最低成交价相对基准的跌幅，不是滚动高点到低点的最大回撤。上涨显示正值，未跌破基准显示 0%。只纳入已收盘日线；未来窗口显示“未到期”，缺失行情显示“数据缺失”。<p>事件日采用榜中所列日期作为统计锚点，并非精确公告时刻；跨日事件 2025-10-10/11 取 10 月 10 日，币安取 2026-10-29（均为 UTC）。这些是同期市场表现，不能据此认定全部涨跌由单一事件造成。</p><p>行情快照截至 <time id="btc-snapshot-date" datetime="2026-10-30">2026-10-30</time>，完整日线截至 <time id="btc-snapshot-last-day" datetime="2026-10-29">2026-10-29</time>，非实时更新。<a href="https://docs.cdp.coinbase.com/api-reference/exchange-api/rest-api/products/get-product-candles" target="_blank" rel="noopener noreferrer">行情来源与字段说明 ↗</a> · <a href="data/btc-event-history.json" target="_blank" rel="noopener noreferrer">原始日线与计算快照 ↗</a></p></div>
     <div class="board reveal" id="board"></div>
-    <div class="archive-note reveal" style="margin-top:28px"><b>已收录 · 暂不排名：</b><a href="#bitget-voxel-2025">Bitget VOXELUSDT 异常（2025-04-20）</a>、<a href="#bitget-bgb-2024">Bitget BGB 连锁清算（2024-10-07）</a>。官方未披露损失总额，无法按金额排序；详情与来源见下方档案。</div>
+    <div class="rank-actions"><button class="archive-button" id="rank-more" type="button" aria-expanded="false" aria-controls="board"></button></div>
+    <div class="archive-note reveal" style="margin-top:28px"><b>档案覆盖全部已核实记录：</b>Bitget 交易异常、Coinbase 补救预算、Bithumb 误记账，以及仅披露原币种或损失比例的事件照常入档。它们不直接参与美元金额排序，可在下方按类型、地区或名称筛选。</div>
   </section>
 
   <!-- exchange incidents: amounts use the explicitly stated scope, never summed -->
   <section class="section" id="exchange-incidents" aria-labelledby="incidents-heading">
     <div class="sec-head reveal"><span class="no">03</span><h2 id="incidents-heading">交易所风险事件档案</h2><span class="line"></span></div>
-    <p class="section-intro reveal">补录币安、Bybit 与 Bitget 的安全及交易异常事件。按事件日期倒序展示，每条保留金额口径、调查状态与公开来源。</p>
-    <div class="archive-note reveal"><b>统计口径：</b>受影响资产、被盗资产、强平损失及补偿预算不能直接相加。冻结资产也不等于已追回或已赔付；未披露的损失金额记为“未披露”，不记为零。以下共收录 4 起事件，不构成完整事件清单。</div>
-    <div class="incidents">
-      <article class="incident latest reveal" id="binance-2026">
-        <div class="incident-meta"><time datetime="2026-10-29">2026-10-29 / 30 披露</time><span class="incident-type">安全事件 · 调查中</span></div>
-        <h3>Binance 币安 · 未经授权的提现</h3>
-        <div class="incident-metric">≈ $63 亿</div>
-        <div class="metric-label">平台初步估计的受影响资产规模 · 非最终净损失</div>
-        <p>币安官方新闻账号于 10 月 30 日转述公告：事件估计涉及约 <b>63 亿美元</b>资产，已与合作方冻结链上资产约 <b>30 亿美元</b>。美联社亦于 10 月 29 日报道了平台披露的金额。</p>
-        <p>平台初步调查称，攻击可能始于一名 DevOps 工程师的电脑被入侵，攻击者随后通过服务容器提交未经授权的提现。平台称暂未发现钱包私钥泄露证据，并表示将以 SAFU 基金及自有资金承担损失。<b>原因仍待完整调查确认，赔付承诺不等于赔付已经完成。</b></p>
-        <div class="incident-sources"><a href="https://www.binance.com/en/square/post/10-30-2026-binance-stated-that-the-security-incident-affected-approximately-6-3-billion-with-about-3-billion-frozen-382718598048399" target="_blank" rel="noopener noreferrer">币安官方新闻账号 · 2026-10-30 ↗</a><a href="https://apnews.com/article/39cda8ceb8095e036334a18549d3d20d" target="_blank" rel="noopener noreferrer">美联社 · 2026-10-29 ↗</a></div>
-        <div data-btc-event="2026-10-29"></div>
-      </article>
-      <article class="incident reveal" id="bitget-voxel-2025">
-        <div class="incident-meta"><time datetime="2025-04-20">2025-04-20</time><span class="incident-type">交易异常 · 回滚与补偿</span></div>
-        <h3>Bitget · VOXELUSDT 永续合约异常</h3>
-        <div class="incident-metric text">总损失未披露</div>
-        <div class="metric-label">官方公告未公布可比的损失或爆仓总额</div>
-        <p>Bitget 确认当日 <b>08:00–08:30 UTC</b> 发生异常成交量和价格波动。平台称部分账户可能涉及市场操纵，限制相关账户，并宣布回滚异常交易及为符合条件的亏损用户提供补偿。</p>
-        <p>后续公告另列出价值 <b>100 万 USDT 的 BGB</b> 用户激励池；该预算不是事件总损失。本条按交易异常记录，不标为已证实的黑客盗币。</p>
-        <div class="incident-sources"><a href="https://www.bitget.com/en-CA/support/articles/12560603825918" target="_blank" rel="noopener noreferrer">Bitget 事件公告 ↗</a><a href="https://www.bitget.com/support/articles/12560603826039" target="_blank" rel="noopener noreferrer">Bitget 后续激励公告 ↗</a></div>
-        <div data-btc-event="2025-04-20"></div>
-      </article>
-      <article class="incident reveal" id="bybit-2025">
-        <div class="incident-meta"><time datetime="2025-02-21">2025-02-21</time><span class="incident-type">资产被盗 · FBI 已披露</span></div>
-        <h3>Bybit · 约 15 亿美元加密资产被盗</h3>
-        <div class="incident-metric">≈ $15 亿</div>
-        <div class="metric-label">事件发生时估算的被盗资产价值</div>
-        <p>FBI 于 2025 年 2 月 26 日发布公告，确认 Bybit 在 2 月 21 日前后被盗约 <b>15 亿美元</b>虚拟资产，并将攻击归因于朝鲜的 TraderTraitor 活动。</p>
-        <p>此金额按被盗资产口径纳入上方金额榜，并标明事件类型；与全市场 24 小时合约爆仓金额分属不同口径，不作合计。</p>
-        <div class="incident-sources"><a href="https://www.fbi.gov/investigate/cyber/alerts/2025/north-korea-responsible-for-1-5-billion-bybit-hack" target="_blank" rel="noopener noreferrer">FBI 官方公告 · 2025-02-26 ↗</a></div>
-        <div data-btc-event="2025-02-21"></div>
-      </article>
-      <article class="incident reveal" id="bitget-bgb-2024">
-        <div class="incident-meta"><time datetime="2024-10-07">2024-10-07</time><span class="incident-type">价格异常 · 连锁强平</span></div>
-        <h3>Bitget · BGB 异常波动与连锁清算</h3>
-        <div class="incident-metric text">总损失未披露</div>
-        <div class="metric-label">官方补偿公告未披露事件损失总额</div>
-        <p>Bitget 公告称，当日 <b>02:53:00–02:58:59 UTC</b> 的 BGB 异常波动，由连续的大额杠杆交易触发，并引起质押借贷、现货杠杆和合约头寸的连锁强平。</p>
-        <p>平台公布了对符合条件用户的补偿方案。由于公告没有披露可比的强平总金额，本条在上方金额榜后列为“暂不排名”，并保留风险档案与官方来源。</p>
-        <div class="incident-sources"><a href="https://www.bitgetapp.com/support/articles/12560603816501" target="_blank" rel="noopener noreferrer">Bitget 波动说明与补偿方案 ↗</a></div>
-        <div data-btc-event="2024-10-07"></div>
-      </article>
+    <p class="section-intro reveal">从日本、韩国、印度到欧洲、美洲与中东，核查交易所的盗币、破产、停提和交易异常。每起事件保留原始金额口径、公开来源和 BTC 价格窗口。</p>
+    <div class="archive-note reveal"><b>收录范围：</b>2014–2026 年全球中心化交易所及交易平台关联收益产品的重大公开事件。优先收录千万美元级安全事故、破产、长期停提及有代表性的交易异常；不含独立 DeFi、跨链桥、非托管钱包、纯借贷机构和一般监管罚款。<p><b>完整性说明：</b>这是按公开资料持续核实的重大事件档案，不宣称覆盖全球所有事故。地区按事件主要市场或监管背景标记，不代表平台当前注册地。<a href="data/exchange-incidents.json" target="_blank" rel="noopener noreferrer">查看完整事件数据与逐条来源 ↗</a></p><p><b>金额口径：</b>盗币、资金挪用、冻结资产、补救预算与爆仓名义价值不能相加。保留原币种；没有可靠美元估值、只有比例或预算区间的事件，照常入档但暂不参与美元排序。同平台不同事件分开记录，关联事件可能存在资产重叠。</p></div>
+    <nav class="archive-jumps" aria-label="重点事件"><a href="#ftx-2022">FTX 挪用与破产 ↗</a><a href="#ftx-hack-2022">FTX 破产期间盗币 ↗</a><a href="#bitget-2026">Bitget 2026 攻击 ↗</a><a href="#mtgox-2014">Mt. Gox ↗</a><a href="#coincheck-2018">Coincheck ↗</a></nav>
+    <div class="archive-controls">
+      <label>搜索交易所或事件<input id="archive-search" type="search" placeholder="FTX、Mt. Gox、日本、热钱包…" autocomplete="off"></label>
+      <label>事件类型<select id="archive-type"><option value="">全部类型</option><option value="hack">安全攻击／盗币</option><option value="collapse">破产／关停／资金缺口</option><option value="freeze">停提／冻结／流动性</option><option value="trading">交易／记账异常</option><option value="data">数据泄露／社工诈骗</option></select></label>
+      <label>地区<select id="archive-region"><option value="">全部地区</option></select></label>
     </div>
-    <p class="archive-updated">最近核实：<time datetime="2026-10-30">2026-10-30</time> · 金额均为美元口径；事件时间按来源标注，分钟级时间使用 UTC。</p>
+    <div class="archive-status"><span id="archive-count" role="status" aria-live="polite"></span><button class="archive-button" id="archive-reset" type="button">清除筛选</button></div>
+    <div class="incidents" id="incidents"></div>
+    <p id="archive-empty" hidden>没有匹配事件，请调整关键词或清除筛选。</p>
+    <noscript><p class="archive-note">请启用 JavaScript 查看筛选档案，或直接打开上方完整事件数据与来源。</p></noscript>
+    <p class="archive-updated">最近核实：<time datetime="2026-10-30">2026-10-30</time> · 金额币种与统计范围逐条标注；事件日按来源设定，价格统一采用 Coinbase BTC/USD 的 UTC 日线。</p>
   </section>
 </div>
 
@@ -347,6 +341,7 @@ footer .note{font-family:var(--serif);font-size:13.5px;color:var(--dim)}
   </footer>
 </div>
 
+<script src="data/exchange-incidents.js"></script>
 <script src="data/btc-event-history.js"></script>
 <script>
 // generate descending candles
@@ -385,7 +380,7 @@ if(btcHistory){
 const btcMoney=value=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:2,maximumFractionDigits:2}).format(value);
 function btcImpact(eventDate){
   const item=btcHistory?.events?.[eventDate];
-  if(!item)return '<div class="btc-impact btc-missing">BTC 行情数据缺失，暂不计算。</div>';
+  if(!item || item.status==='unavailable')return '<div class="btc-impact btc-missing">BTC 行情数据缺失：Coinbase BTC/USD 未提供该日期的完整基准日线，暂不计算。</div>';
   const percent=value=>`${value>0?'+':''}${value.toFixed(2)}%`;
   const priceClass=value=>value<0?'down':value>0?'up':'';
   const metric=(label,change)=>`<div><span class="btc-label">${label}</span><span class="btc-value ${change.status==='complete'?priceClass(change.pct):'pending'}">${change.status==='complete'?percent(change.pct):change.status==='pending'?'未到期':'数据缺失'}</span></div>`;
@@ -407,23 +402,72 @@ function btcImpact(eventDate){
 }
 document.querySelectorAll('[data-btc-event]').forEach(el=>{el.innerHTML=btcImpact(el.dataset.btcEvent);});
 
+const archiveSnapshot=window.EXCHANGE_INCIDENTS;
+const archiveEvents=archiveSnapshot?.events || [];
+const escapeHTML=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+const typeNames={hack:'安全攻击／盗币',collapse:'破产／关停／资金缺口',freeze:'停提／冻结／流动性',trading:'交易／记账异常',data:'数据泄露／社工诈骗'};
+const incidentById=new Map(archiveEvents.map(event=>[event.id,event]));
+document.getElementById('incidents').innerHTML=archiveEvents.map(event=>`
+  <article class="incident ${event.id==='binance-2026'?'latest':''}" id="${escapeHTML(event.id)}">
+    <details ${event.id==='binance-2026'||event.id==='ftx-2022'?'open':''}>
+      <summary>
+        <div class="incident-meta"><time datetime="${escapeHTML(event.date)}">${escapeHTML(event.dateLabel)}</time><span class="incident-type">${escapeHTML(typeNames[event.type])}</span></div>
+        <h3>${escapeHTML(event.name)}</h3>
+        <div class="incident-metric ${event.rankUsd===null?'text':''}">${escapeHTML(event.metric)}</div>
+        <div class="metric-label">${escapeHTML(event.scope)}</div>
+        <span class="incident-open">${escapeHTML(event.market)} · 展开事件、来源与 BTC 表现 ＋</span>
+      </summary>
+      <div class="incident-body">
+        <p>${escapeHTML(event.region)} · ${escapeHTML(event.market)} · 核实于 ${escapeHTML(event.verifiedAt)}</p>
+        ${event.paragraphs.map(p=>`<p>${escapeHTML(p)}</p>`).join('')}
+        <div class="incident-sources">${event.sources.map(source=>`<a href="${escapeHTML(source.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(source.label)} ↗</a>`).join('')}</div>
+        ${event.btcDate?btcImpact(event.btcDate):'<div class="btc-impact btc-missing">仅有月份级事件锚点，不指定单日 BTC 涨跌。</div>'}
+      </div>
+    </details>
+  </article>`).join('');
+const searchInput=document.getElementById('archive-search');
+const typeSelect=document.getElementById('archive-type');
+const regionSelect=document.getElementById('archive-region');
+regionSelect.innerHTML+=[...new Set(archiveEvents.map(e=>e.region))].sort((a,b)=>a.localeCompare(b,'zh-CN')).map(region=>`<option value="${escapeHTML(region)}">${escapeHTML(region)}</option>`).join('');
+function filterArchive(){
+  const query=searchInput.value.trim().toLocaleLowerCase();let count=0;
+  archiveEvents.forEach(event=>{
+    const haystack=[event.name,event.market,event.region,event.date,event.scope,...event.paragraphs].join(' ').toLocaleLowerCase();
+    const visible=(!query||haystack.includes(query))&&(!typeSelect.value||event.type===typeSelect.value)&&(!regionSelect.value||event.region===regionSelect.value);
+    document.getElementById(event.id).hidden=!visible;if(visible)count++;
+  });
+  document.getElementById('archive-count').textContent=`显示 ${count} / ${archiveEvents.length} 起事件 · 2014–2026 · 日期倒序`;
+  document.getElementById('archive-empty').hidden=count!==0;
+}
+function resetArchive(){searchInput.value='';typeSelect.value='';regionSelect.value='';filterArchive();}
+searchInput.addEventListener('input',filterArchive);typeSelect.addEventListener('change',filterArchive);regionSelect.addEventListener('change',filterArchive);
+document.getElementById('archive-reset').addEventListener('click',resetArchive);filterArchive();
+function revealArchiveTarget(hash){
+  const id=hash.slice(1);if(!incidentById.has(id))return;
+  resetArchive();document.getElementById(id).querySelector('details').open=true;
+}
+document.addEventListener('click',event=>{
+  const link=event.target.closest('a[href^="#"]');if(link)revealArchiveTarget(link.hash);
+});
+window.addEventListener('hashchange',()=>revealArchiveTarget(location.hash));
+revealArchiveTarget(location.hash);
+
 const events=[
   {date:'2025-10-10/11',name:'川普关税突袭引爆循环贷',amt:'$190亿',num:190,yr:'历史新高',top:true,badge:'RECORD'},
-  {date:'2026-10-29/30',name:'Binance 币安安全事件',amt:'≈ $63亿',num:63,yr:'2026',kind:'受影响资产 · 初步估计 · 调查中',detail:'#binance-2026'},
   {date:'2021-05-19',name:'519 币灾血洗',amt:'$93亿',num:93,yr:'2021'},
   {date:'2020-03-12',name:'312 惨案（COVID-19 恐慌）',amt:'$30亿+',num:30,yr:'2020'},
   {date:'2025-02-03',name:'川普贸易谈判预期逆转',amt:'$22.3亿',num:22.3,yr:'2025'},
   {date:'2022-05-12',name:'Terra / Luna 稳定币崩盘',amt:'$20亿',num:20,yr:'2022'},
   {date:'2025-09-22',name:'年度最大多单爆仓事件',amt:'$18亿',num:18,yr:'2025'},
   {date:'2024-12-10',name:'1210 增量行情反转',amt:'$17亿',num:17,yr:'2024'},
-  {date:'2022-11-08',name:'FTX 交易所挤兑崩盘',amt:'$15亿',num:15,yr:'2022'},
-  {date:'2025-02-21',name:'Bybit 加密资产被盗',amt:'≈ $15亿',num:15,yr:'2025',kind:'被盗资产 · 事发时估值',detail:'#bybit-2025'},
   {date:'2024-08-05',name:'日本央行加息平仓潮',amt:'$11.5亿',num:11.5,yr:'2024'},
   {date:'2023-08-18',name:'年度最大合约清算日',amt:'$10.5亿',num:10.5,yr:'2023'}
-].sort((a,b)=>b.num-a.num || b.date.localeCompare(a.date));
+].concat(archiveEvents.filter(e=>Number.isFinite(e.rankUsd)&&e.rankUsd>0).map(e=>({
+  date:e.dateLabel,priceDate:e.btcDate,name:e.name,amt:e.metric,num:e.rankUsd/1e8,yr:e.date.slice(0,4),kind:e.scope,detail:'#'+e.id
+}))).sort((a,b)=>b.num-a.num || b.date.localeCompare(a.date));
 const max=Math.max(...events.map(e=>e.num));
 document.getElementById('board').innerHTML=events.map((e,index)=>`
-  <div class="lr ${e.top?'top':''}">
+  <div class="lr ${e.top?'top':''}" ${index>=15?'hidden':''}>
     <div class="rank">${index+1}</div>
     <div class="main">
       <div class="top-row">
@@ -432,9 +476,20 @@ document.getElementById('board').innerHTML=events.map((e,index)=>`
       </div>
       <div class="track"><i data-w="${(e.num/max*100).toFixed(1)}"></i></div>
       <div class="date">${e.date} · ${e.kind || '24H 爆仓名义价值'}${e.detail?` · <a href="${e.detail}">核实来源与详情 ↗</a>`:''}</div>
-      ${btcImpact(e.date.slice(0,10))}
+      ${btcImpact(e.priceDate || e.date.slice(0,10))}
     </div>
   </div>`).join('');
+
+const rankMore=document.getElementById('rank-more');
+rankMore.textContent=`展开全部 ${events.length} 项排名`;
+rankMore.hidden=events.length<=15;
+rankMore.addEventListener('click',()=>{
+  const expanded=rankMore.getAttribute('aria-expanded')!=='true';
+  document.querySelectorAll('#board .lr').forEach((row,index)=>{row.hidden=!expanded&&index>=15;});
+  rankMore.setAttribute('aria-expanded',String(expanded));
+  rankMore.textContent=expanded?'收起为前 15 项':`展开全部 ${events.length} 项排名`;
+  if(!expanded)document.getElementById('board').scrollIntoView({block:'start',behavior:'auto'});
+});
 
 const io=new IntersectionObserver((es)=>{es.forEach(en=>{if(!en.isIntersecting)return;en.target.classList.add('in');en.target.querySelectorAll('.track i').forEach((b,i)=>setTimeout(()=>b.style.width=b.dataset.w+'%',70*i));io.unobserve(en.target);});},{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
