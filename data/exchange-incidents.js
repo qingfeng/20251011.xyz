@@ -2,8 +2,8 @@
 window.EXCHANGE_INCIDENTS = {
   "schemaVersion": 1,
   "asOf": "2026-10-30",
-  "coverage": "2014–2026 年全球中心化交易所及交易平台关联收益产品的重大公开事件；优先收录千万美元级安全事件、破产、长期停提，以及有代表性的交易异常。非全球全部事故登记。",
-  "exclusions": "不含独立 DeFi 协议、跨链桥、非托管钱包、纯借贷机构及一般监管罚款；同一交易所的不同事件分别列示。",
+  "coverage": "2014–2026 年全球中心化交易所及交易平台关联收益产品的重大公开事件，并增补已核实的硬件钱包安全事件；钱包部分目前收录 Ledger／CryptoBilis 2026 年事件。优先收录千万美元级安全事件、破产、长期停提，以及有代表性的交易异常。非全球全部事故登记。",
+  "exclusions": "不含独立 DeFi 协议、跨链桥、一般非托管软件钱包、纯借贷机构及一般监管罚款；同一平台的不同事件分别列示。硬件钱包记录按实际机制标记，不代表该品牌所有设备均受影响。",
   "events": [
     {
       "id": "binance-2026",
@@ -31,6 +31,40 @@ window.EXCHANGE_INCIDENTS = {
         }
       ],
       "btcDate": "2026-10-29",
+      "verifiedAt": "2026-10-30"
+    },
+    {
+      "id": "ledger-cryptobilis-2026",
+      "date": "2026-10-09",
+      "dateLabel": "2026-10-09 披露／集中盗币",
+      "name": "Ledger／CryptoBilis · 硬件植入与助记词泄露",
+      "region": "南亚与东南亚",
+      "market": "马来西亚、印度尼西亚、菲律宾等经销渠道",
+      "type": "hardware",
+      "metric": "≈ $1.02 亿（链上估计）",
+      "scope": "Bitquery 截至 2026-10-16 追踪估值；Ledger 未确认最终损失总额",
+      "rankUsd": 102000000,
+      "paragraphs": [
+        "10 月 9 日，部分购买经销商 CryptoBilis 所售 Ledger 设备的用户报告资产被转走。Ledger 后续调查确认受影响设备中存在未经授权的硬件植入物；其可在初始化时读取屏幕显示的助记词，并通过蜂窝网络外传。",
+        "Ledger 在 10 月 15 日更新中称，攻击发生于设备离开其控制后的经销环节，芯片、操作系统及服务器未被攻破。该说法是厂商调查结论，不能据此将所有 Ledger 设备或所有销售渠道列为受影响。",
+        "Bitquery 截至 10 月 16 日追踪估计，335 个钱包地址跨六条链被转走约 1.02 亿美元。地址数不等于受害人数或设备数；这也不是 Ledger 确认的最终损失。早期约 8,600 万、9,300 万美元属于同一事件的不同统计版本，不重复累加。",
+        "本条按硬件钱包经销渠道篡改事件收录，与交易所托管钱包被盗分开标记。BTC 统计锚点采用 10 月 9 日披露／集中盗币日；后续市场表现不能证明由该事件单独造成。"
+      ],
+      "sources": [
+        {
+          "label": "Ledger 官方调查回应（2026-10-15 更新）",
+          "url": "https://support.ledger.com/ru/article/Ledger-s-Response-to-the-Hardware-Implant-Attack"
+        },
+        {
+          "label": "Bitquery · 截至 2026-10-16 的链上估计",
+          "url": "https://www.bitquery.io/investigations/ledger-cryptobilis-hack"
+        },
+        {
+          "label": "The Record · 硬件植入机制及官方回应",
+          "url": "https://therecord.media/ledger-cryptocurrency-wallet-implant-theft"
+        }
+      ],
+      "btcDate": "2026-10-09",
       "verifiedAt": "2026-10-30"
     },
     {

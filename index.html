@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>20251011 - 加密史上最大爆仓日｜循环贷踩踏与交易所风险记录</title>
 <meta name="author" content="20251011.xyz" />
-<meta name="description" content="记录2025年10月11日加密市场爆仓金额高达190亿美元的历史性瞬间。川普突发宣布新对中国关税政策，引发循环贷链式踩踏，导致加密市场爆仓金额刷新纪录。另收录全球交易所盗币、FTX 等破产及停提事件，附 BTC 价格表现、逐条来源与筛选档案。" />
+<meta name="description" content="记录2025年10月11日加密市场爆仓金额高达190亿美元的历史性瞬间。川普突发宣布新对中国关税政策，引发循环贷链式踩踏，导致加密市场爆仓金额刷新纪录。另收录全球交易所盗币、FTX 等破产停提和 Ledger 硬件钱包事件，附 BTC 价格表现、逐条来源与筛选档案。" />
 <meta name="keywords" content="20251011,币圈爆仓,加密爆仓历史,循环贷踩踏,川普关税,190亿美元爆仓" />
 <meta name="robots" content="index, follow" />
 <meta property="og:title" content="20251011 - 加密史上最大爆仓日" />
@@ -301,7 +301,7 @@ footer .note{font-family:var(--serif);font-size:13.5px;color:var(--dim)}
   <!-- leaderboard -->
   <section class="section">
     <div class="sec-head reveal"><span class="no">02</span><h2>加密重大风险事件金额榜</h2><span class="line"></span></div>
-    <p class="reveal" style="margin:-32px 0 44px;color:var(--muted);font-size:14px;max-width:780px">按已收录事件公开报道的美元金额从高到低排列，现含全球交易所风险档案与历史爆仓记录。每条标注金额口径；受影响资产、被盗资产与 24 小时爆仓名义价值不等同，不计算合计，也不代表最终净损失排名。同一 FTX 破产事件已将原市场清算条目合并为客户资金挪用记录；其破产期间盗币另有重叠风险说明。金额为近似值或已标注的下限，来源及说明见下方档案。</p>
+    <p class="reveal" style="margin:-32px 0 44px;color:var(--muted);font-size:14px;max-width:780px">按已收录事件公开报道的美元金额从高到低排列，现含全球交易所、硬件钱包风险档案与历史爆仓记录。每条标注金额口径；受影响资产、被盗资产与 24 小时爆仓名义价值不等同，不计算合计，也不代表最终净损失排名。同一 FTX 破产事件已将原市场清算条目合并为客户资金挪用记录；其破产期间盗币另有重叠风险说明。金额为近似值或已标注的下限，来源及说明见下方档案。</p>
     <div class="archive-note reveal" id="btc-methodology"><b>BTC 价格口径：</b>统一采用 Coinbase BTC/USD 的 UTC 日线，以事件日前一日收盘价为基准，展示当日、7 天后和 30 天后的收盘涨跌。“最深下探”取事件日至 30 天后（含首尾）最低成交价相对基准的跌幅，不是滚动高点到低点的最大回撤。上涨显示正值，未跌破基准显示 0%。只纳入已收盘日线；未来窗口显示“未到期”，缺失行情显示“数据缺失”。<p>事件日采用榜中所列日期作为统计锚点，并非精确公告时刻；跨日事件 2025-10-10/11 取 10 月 10 日，币安取 2026-10-29（均为 UTC）。这些是同期市场表现，不能据此认定全部涨跌由单一事件造成。</p><p>行情快照截至 <time id="btc-snapshot-date" datetime="2026-10-30">2026-10-30</time>，完整日线截至 <time id="btc-snapshot-last-day" datetime="2026-10-29">2026-10-29</time>，非实时更新。<a href="https://docs.cdp.coinbase.com/api-reference/exchange-api/rest-api/products/get-product-candles" target="_blank" rel="noopener noreferrer">行情来源与字段说明 ↗</a> · <a href="data/btc-event-history.json" target="_blank" rel="noopener noreferrer">原始日线与计算快照 ↗</a></p></div>
     <div class="board reveal" id="board"></div>
     <div class="rank-actions"><button class="archive-button" id="rank-more" type="button" aria-expanded="false" aria-controls="board"></button></div>
@@ -310,13 +310,13 @@ footer .note{font-family:var(--serif);font-size:13.5px;color:var(--dim)}
 
   <!-- exchange incidents: amounts use the explicitly stated scope, never summed -->
   <section class="section" id="exchange-incidents" aria-labelledby="incidents-heading">
-    <div class="sec-head reveal"><span class="no">03</span><h2 id="incidents-heading">交易所风险事件档案</h2><span class="line"></span></div>
-    <p class="section-intro reveal">从日本、韩国、印度到欧洲、美洲与中东，核查交易所的盗币、破产、停提和交易异常。每起事件保留原始金额口径、公开来源和 BTC 价格窗口。</p>
-    <div class="archive-note reveal"><b>收录范围：</b>2014–2026 年全球中心化交易所及交易平台关联收益产品的重大公开事件。优先收录千万美元级安全事故、破产、长期停提及有代表性的交易异常；不含独立 DeFi、跨链桥、非托管钱包、纯借贷机构和一般监管罚款。<p><b>完整性说明：</b>这是按公开资料持续核实的重大事件档案，不宣称覆盖全球所有事故。地区按事件主要市场或监管背景标记，不代表平台当前注册地。<a href="data/exchange-incidents.json" target="_blank" rel="noopener noreferrer">查看完整事件数据与逐条来源 ↗</a></p><p><b>金额口径：</b>盗币、资金挪用、冻结资产、补救预算与爆仓名义价值不能相加。保留原币种；没有可靠美元估值、只有比例或预算区间的事件，照常入档但暂不参与美元排序。同平台不同事件分开记录，关联事件可能存在资产重叠。</p></div>
-    <nav class="archive-jumps" aria-label="重点事件"><a href="#ftx-2022">FTX 挪用与破产 ↗</a><a href="#ftx-hack-2022">FTX 破产期间盗币 ↗</a><a href="#bitget-2026">Bitget 2026 攻击 ↗</a><a href="#mtgox-2014">Mt. Gox ↗</a><a href="#coincheck-2018">Coincheck ↗</a></nav>
+    <div class="sec-head reveal"><span class="no">03</span><h2 id="incidents-heading">交易所与硬件钱包风险档案</h2><span class="line"></span></div>
+    <p class="section-intro reveal">从日本、韩国、印度到欧洲、美洲与中东，核查交易所的盗币、破产、停提、交易异常，以及硬件钱包的设备篡改事件。每起事件保留原始金额口径、公开来源和 BTC 价格窗口。</p>
+    <div class="archive-note reveal"><b>收录范围：</b>2014–2026 年全球中心化交易所及交易平台关联收益产品的重大公开事件，并增补已核实的硬件钱包安全事件。钱包部分目前收录 Ledger／CryptoBilis 2026 年渠道篡改事件。优先收录千万美元级安全事故、破产、长期停提及有代表性的交易异常；不含独立 DeFi、跨链桥、一般非托管软件钱包、纯借贷机构和一般监管罚款。<p><b>完整性说明：</b>这是按公开资料持续核实的重大事件档案，不宣称覆盖全球所有事故。地区按事件主要市场或监管背景标记，不代表平台当前注册地。<a href="data/exchange-incidents.json" target="_blank" rel="noopener noreferrer">查看完整事件数据与逐条来源 ↗</a></p><p><b>金额口径：</b>盗币、资金挪用、冻结资产、补救预算与爆仓名义价值不能相加。保留原币种；没有可靠美元估值、只有比例或预算区间的事件，照常入档但暂不参与美元排序。同平台不同事件分开记录，关联事件可能存在资产重叠。</p></div>
+    <nav class="archive-jumps" aria-label="重点事件"><a href="#ledger-cryptobilis-2026">Ledger 硬件植入事件 ↗</a><a href="#ftx-2022">FTX 挪用与破产 ↗</a><a href="#ftx-hack-2022">FTX 破产期间盗币 ↗</a><a href="#bitget-2026">Bitget 2026 攻击 ↗</a><a href="#mtgox-2014">Mt. Gox ↗</a><a href="#coincheck-2018">Coincheck ↗</a></nav>
     <div class="archive-controls">
-      <label>搜索交易所或事件<input id="archive-search" type="search" placeholder="FTX、Mt. Gox、日本、热钱包…" autocomplete="off"></label>
-      <label>事件类型<select id="archive-type"><option value="">全部类型</option><option value="hack">安全攻击／盗币</option><option value="collapse">破产／关停／资金缺口</option><option value="freeze">停提／冻结／流动性</option><option value="trading">交易／记账异常</option><option value="data">数据泄露／社工诈骗</option></select></label>
+      <label>搜索交易所或事件<input id="archive-search" type="search" placeholder="FTX、Ledger、日本、热钱包…" autocomplete="off"></label>
+      <label>事件类型<select id="archive-type"><option value="">全部类型</option><option value="hack">安全攻击／盗币</option><option value="hardware">硬件钱包／渠道篡改</option><option value="collapse">破产／关停／资金缺口</option><option value="freeze">停提／冻结／流动性</option><option value="trading">交易／记账异常</option><option value="data">数据泄露／社工诈骗</option></select></label>
       <label>地区<select id="archive-region"><option value="">全部地区</option></select></label>
     </div>
     <div class="archive-status"><span id="archive-count" role="status" aria-live="polite"></span><button class="archive-button" id="archive-reset" type="button">清除筛选</button></div>
@@ -405,7 +405,7 @@ document.querySelectorAll('[data-btc-event]').forEach(el=>{el.innerHTML=btcImpac
 const archiveSnapshot=window.EXCHANGE_INCIDENTS;
 const archiveEvents=archiveSnapshot?.events || [];
 const escapeHTML=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-const typeNames={hack:'安全攻击／盗币',collapse:'破产／关停／资金缺口',freeze:'停提／冻结／流动性',trading:'交易／记账异常',data:'数据泄露／社工诈骗'};
+const typeNames={hack:'安全攻击／盗币',hardware:'硬件钱包／渠道篡改',collapse:'破产／关停／资金缺口',freeze:'停提／冻结／流动性',trading:'交易／记账异常',data:'数据泄露／社工诈骗'};
 const incidentById=new Map(archiveEvents.map(event=>[event.id,event]));
 document.getElementById('incidents').innerHTML=archiveEvents.map(event=>`
   <article class="incident ${event.id==='binance-2026'?'latest':''}" id="${escapeHTML(event.id)}">
