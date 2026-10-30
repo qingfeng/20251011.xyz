@@ -1,14 +1,13 @@
-# Cloudflare Pages 缓存策略（极致版 · 页面几乎不更新）
-# HTML 与静态资源在边缘(CDN)与浏览器都缓存 1 年。
-# 注意：浏览器缓存 Purge 不掉；改版后老访客可能最长 1 年才看到新版。
-# 若以后可能需要较快生效，把 HTML 的 max-age 改回 86400 即可。
+# Cloudflare Pages 缓存策略
+# 新闻与事件记录会更新，HTML 每次访问均需重新验证。
+# 已经缓存旧版 immutable HTML 的浏览器，仍可能需要强制刷新。
 
 /*.html
-  Cache-Control: public, max-age=31536000, s-maxage=31536000, immutable
+  Cache-Control: public, max-age=0, must-revalidate
 
 # 根路径首页
 /
-  Cache-Control: public, max-age=31536000, s-maxage=31536000, immutable
+  Cache-Control: public, max-age=0, must-revalidate
 
 # 图片等静态资源：浏览器 + 边缘都缓存 1 年（更新时改文件名或手动 Purge）
 /assets/*
@@ -19,3 +18,7 @@
   Cache-Control: public, max-age=86400
 /robots.txt
   Cache-Control: public, max-age=86400
+
+# 历史行情快照会随核实更新，不使用长期 immutable 缓存
+/data/*
+  Cache-Control: public, max-age=0, must-revalidate
