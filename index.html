@@ -167,6 +167,10 @@ body.anim-done .rise{opacity:1;transform:none;animation:none}
 .quote::before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:520px;height:520px;max-width:90vw;background:radial-gradient(circle,var(--red-glow),transparent 65%);opacity:.16;z-index:0}
 .quote blockquote{position:relative;z-index:1;font-family:var(--serif);font-weight:500;font-size:clamp(24px,3.6vw,42px);line-height:1.62;color:var(--white);max-width:880px;margin:0 auto;text-wrap:balance}
 .quote blockquote em{color:var(--red)}
+.quote-credit{position:relative;z-index:1;margin:28px 22px 0;font-size:14px;color:var(--muted);line-height:2}
+.quote-credit span{font-family:var(--mono);font-size:12px}
+.quote-credit a{font-size:12px;color:var(--muted);text-underline-offset:4px}
+.quote-credit a:hover{color:var(--white)}
 .quote .mk{font-family:var(--serif);color:var(--red);font-size:96px;line-height:0;height:40px;opacity:.6;position:relative;z-index:1}
 
 footer{border-top:1px solid var(--line-red);padding:48px 0 64px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px}
@@ -332,7 +336,8 @@ footer .note{font-family:var(--serif);font-size:13.5px;color:var(--dim)}
 <!-- quote -->
 <section class="quote reveal">
   <div class="mk">“</div>
-  <blockquote>极端行情从来不按剧本上演。<em>敬畏杠杆、分散风险</em>，是每一次爆仓日留给市场最沉重的箴言。</blockquote>
+  <blockquote>交易最重要的原则，是<em>做好防守</em>，而不是进攻。</blockquote>
+  <p class="quote-credit">— 保罗·都铎·琼斯 <span>Paul Tudor Jones</span><br><a href="https://blog.oneuptrader.com/strategies/paul-tudor-jones-6-trading-lessons-that-help-you-stay-in-the-game/" target="_blank" rel="noopener noreferrer">《金融怪杰》访谈 · 中文意译 ↗</a></p>
 </section>
 
 <div class="wrap">
